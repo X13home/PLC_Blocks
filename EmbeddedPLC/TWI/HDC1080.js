@@ -41,14 +41,13 @@ class HDC1080{
       }
     }else if(st==3){
       ts=TwiStatus();
+      this.to=ms+60000;
       if(ts==0x04001040){
         this.T=((TwiGetByte()<<8) | TwiGetByte());
         this.H=((TwiGetByte()<<8) | TwiGetByte());
-        this.to=ms+60000;
         this.st=1;
         this.present=true;
       } else if((ts & 0xE000) != 0){
-        this.to=ms+60000;
         this.st=0;
         if((ts & 0xFF)==0x40){
           this.present=false;
