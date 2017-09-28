@@ -1,8 +1,8 @@
 class HDC1080{
   constructor(){
     this.st=new UInt8(0);
-    this.T=new UInt16();  // temperature in Â°C=this.T*165/65536-40;
-    this.H=new UInt16();  // humidity in %RH=this.H/655.36;
+    this.T=new UInt16();  // temperature in °C=Math.round(value*165/655.36)/100-40;
+    this.H=new UInt16();  // humidity in %RH=Math.round(value/6.5536)/100;
     this.present=false;
   
     this.to=0;
