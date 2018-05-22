@@ -5,7 +5,7 @@ class HDC1080{
     this.H=new UInt16();  // humidity in %RH=Math.round(value/6.5536)/100;
     this.present=false;
   
-    this.to=0;
+    this.to=getMilliseconds() + 650;
   }
   Read(){
     let st=this.st, ms=getMilliseconds(), ts;
@@ -41,7 +41,7 @@ class HDC1080{
       }
     }else if(st==3){
       ts=TwiStatus();
-      this.to=ms+60000;
+      this.to=ms+25000;  // 25 Sec.
       if(ts==0x04001040){
         this.T=((TwiGetByte()<<8) | TwiGetByte());
         this.H=((TwiGetByte()<<8) | TwiGetByte());
@@ -58,4 +58,5 @@ class HDC1080{
 }
 
 var hdc=new HDC1080();
+
 hdc.Read();
