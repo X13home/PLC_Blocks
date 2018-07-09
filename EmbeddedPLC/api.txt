@@ -32,3 +32,8 @@ Random()
 
 NowSeconds()        total seconds since 0:00:00
 Today()             (year[0..99]<<24) | (month[1..12]<<16) | (day[1..31]<<8) | (dayOfWeek[1-Monday..7-Sunday])
+
+UartInit(nr, speed)	speed: 0 - 2400, 1 - 4800, 2 - 9600, 3 - 19200, 4 - 38400
+UartBytesToRead(nr)
+UartGetByte(nr)
+UartPutByte(nr, data)	return: 0 - ok, 1 - busy
